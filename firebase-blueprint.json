@@ -1,0 +1,39 @@
+{
+  "entities": {
+    "Block": {
+      "title": "Block",
+      "description": "A boulder problem or block.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Name of the block" },
+        "area": { "type": "string", "description": "Sector or area" },
+        "lat": { "type": "number", "description": "Latitude" },
+        "lng": { "type": "number", "description": "Longitude" },
+        "status": { "type": "string", "enum": ["new", "clean", "to_clean", "project"], "description": "Status of the block" },
+        "grade": { "type": "string", "description": "Difficulty grade" },
+        "height": { "type": "string", "description": "Estimated height" },
+        "style": { "type": "string", "description": "Climbing style" },
+        "exposure": { "type": "string", "description": "Sun exposure" },
+        "accessNotes": { "type": "string", "description": "Notes on how to reach the block" },
+        "landingNotes": { "type": "string", "description": "Notes on the landing safety" },
+        "riskLevel": { "type": "string", "description": "Perceived danger level" },
+        "photos": { "type": "array", "items": { "type": "string" }, "description": "URLs of photos" },
+        "linePhoto": { "type": "string", "description": "URL of the topo/line photo" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Creation timestamp" },
+        "createdBy": { "type": "string", "description": "User who added the block" },
+        "createdByEmail": { "type": "string", "description": "Email of the user who added the block" },
+        "createdByDisplayName": { "type": "string", "description": "Display name of the user who added the block" },
+        "projectOwner": { "type": "string", "description": "Original discoverer or project owner" },
+        "visited": { "type": "boolean", "description": "Whether the user has visited it" },
+        "favorite": { "type": "boolean", "description": "Whether it's a favorite" }
+      },
+      "required": ["name", "area", "lat", "lng", "status", "createdAt", "createdBy"]
+    }
+  },
+  "firestore": {
+    "/blocks/{blockId}": {
+      "schema": "Block",
+      "description": "Collection of boulder blocks"
+    }
+  }
+}
